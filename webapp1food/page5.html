@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping-list</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>shopping list</h1>
+    </header>
+
+    <sub>
+        <div class="flexboxrow">
+            <div class="border">
+                <input id="newItemInP5" class="input item" type="text" value="" placeholder="add item">
+            </div>
+            <div class="border">
+                <select id="categoryP5" class="input category" name="category" id="cat">
+                    <option value="no selection">pick a category</option>
+                </select>
+            </div>
+            <div class="border small">
+                <input id="qtyInP5" class="qty" type="number" value="" placeholder="qty">
+                <svg id="addItemBtnP5" class="plus-icon btn" width="23" height="23" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="13.5" cy="13.5" r="12.5" stroke="black" stroke-width="2"/>
+                    <line x1="6" y1="13.5" x2="21" y2="13.5" stroke="black" stroke-width="3"/>
+                    <line y1="-1.5" x2="15" y2="-1.5" transform="matrix(0 -1 -1 0 12 21)" stroke="black" stroke-width="3"/>
+                    </svg>
+            </div>
+        </div>
+        <div class="flexboxrow">
+            <div class="border">
+                <input class="input search" type="text" value="" placeholder="search">
+                <svg class="search-icon btn" width="23" height="23" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="13.5" cy="13.5" r="12.5" stroke="black" stroke-width="2"/>
+                    <path d="M12.082 6.88473C14.8125 6.47246 17.3602 8.35174 17.7724 11.0822C18.1847 13.8127 16.3054 16.3604 13.575 16.7727C10.8445 17.1849 8.29679 15.3057 7.88452 12.5752C7.47225 9.8447 9.35153 7.297 12.082 6.88473Z" stroke="black" stroke-width="2"/>
+                    <line x1="16.3893" y1="16.0244" x2="19.9248" y2="19.5599" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+            </div>
+        </div>
+    </sub>
+
+    <main>
+        <h3 id="h3">please add a category to begin</h3>
+        <div class="flexboxrow">
+            <div class="border">
+                <input id="addCatInP5" class="input add-category" type="text" value="" placeholder="add category">
+                <svg id="addCatBtnP5" class="plus-icon btn" width="23" height="23" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="13.5" cy="13.5" r="12.5" stroke="black" stroke-width="2"/>
+                    <line x1="6" y1="13.5" x2="21" y2="13.5" stroke="black" stroke-width="3"/>
+                    <line y1="-1.5" x2="15" y2="-1.5" transform="matrix(0 -1 -1 0 12 21)" stroke="black" stroke-width="3"/>
+                    </svg>
+            </div>
+        </div>
+        <div id="dynamicContainer" class="gridbox3">
+        </div>
+    </main>
+
+    <nav>
+        <div class="flexboxrow arrows">
+            <svg class="btn" width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 14.9019L25.75 1.47853C27.75 0.323826 30.25 1.7672 30.25 4.07661L30.25 30.9234C30.25 33.2328 27.75 34.6762 25.75 33.5215L2.49999 20.0981C0.499996 18.9434 0.499997 16.0566 2.5 14.9019Z" stroke="black" stroke-width="2"/>
+                </svg>
+        </div>
+        <div class="icon coin">
+            <a href="page1.html">
+                <svg width="40" height="40" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="19.5" cy="19.5" r="18.5" stroke="black" stroke-width="2"/>
+                    <path d="M20.5849 18.2273C22.9623 19.0645 24.6226 20.0388 25.566 21.062C26.522 22.0749 27 23.2274 27 24.5194C27 26.1525 26.4277 27.5426 25.283 28.6899C24.1509 29.8269 22.5849 30.5969 20.5849 31V33H18.3774V31.2326H18.2264C15.9371 31.2326 13.9308 30.8605 12.2075 30.1163L12.8491 27.9302C14.8742 28.6848 16.6415 29.062 18.1509 29.062H18.3774V20.0233C15.673 19.0724 13.9308 18.137 13.1509 17.2171C12.3836 16.2868 12 15.3049 12 14.2713C12 12.8036 12.5597 11.5736 13.6792 10.5814C14.7987 9.58915 16.3648 8.94315 18.3774 8.64341V7H20.5849V8.51938C22.3082 8.51938 24.0063 8.7416 25.6792 9.18605L24.9811 11.3566C23.4465 10.9121 21.9811 10.6899 20.5849 10.6899V18.2273ZM18.3774 17.4186V10.907C16.1384 11.3928 15.0189 12.4832 15.0189 14.1783C15.0189 15.4289 16.1384 16.509 18.3774 17.4186ZM20.5849 28.7829C22.8491 28.1111 23.9811 26.7984 23.9811 24.845C23.9811 23.9767 23.7107 23.2377 23.1698 22.6279C22.6415 22.0181 21.7799 21.4444 20.5849 20.907V28.7829Z" fill="black"/>
+                    </svg>
+            </a>
+        </div>
+        <div class="icon chef-hat">
+            <a href="page2.html">
+                <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.4536 25.021V40.021C11.4536 41.1256 12.349 42.021 13.4536 42.021H30.4536C31.5582 42.021 32.4536 41.1256 32.4536 40.021V25.021" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12.3273 8.86772C13.4761 1.43102 30.0608 0.655303 31.388 8.87423" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10.7914 24.5602C-3.16945 22.7896 -1.38206 3.57487 14.3398 4.92336" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M32.6622 24.5709C46.6231 22.8003 44.8357 3.58561 29.1138 4.9341" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="11.4536" y1="36.021" x2="32.4536" y2="36.021" stroke="black" stroke-width="2"/>
+                    <line x1="18" y1="26" x2="18" y2="31" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="22" y1="26" x2="22" y2="31" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="26" y1="26" x2="26" y2="31" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+            </a>
+        </div>
+        <div class="icon heart">
+            <a href="page3.html">
+                <svg width="39" height="40" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.63644 18.8972C-5.28666 7.13934 10.5767 -5.68798 19.5 5.0012C28.4232 -5.68798 44.2868 7.6734 35.3635 18.8972L19.5 36L3.63644 18.8972Z" stroke="black" stroke-width="2"/>
+                    </svg>                    
+            </a>
+        </div>
+        <div class="icon fridge">
+            <a href="page4.html">
+                <svg width="27" height="40" viewBox="0 0 27 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 14V3C1 1.89543 1.89543 1 3 1H23.5C24.6046 1 25.5 1.89543 25.5 3V14M1 14V34.5C1 35.6046 1.89543 36.5 3 36.5H4M1 14H25.5M25.5 14V34.5C25.5 35.6046 24.6046 36.5 23.5 36.5H22.5M4.5 5.5V9.5M4.5 18V26M4 36.5V38.5M4 36.5H22.5M22.5 36.5V38.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+            </a>
+        </div>
+        <div class="icon shopping-list">
+            <a href="page5.html">
+                <svg width="46" height="40" viewBox="0 0 46 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1H8.55883C9.423 1 10.1894 1.55504 10.459 2.37609L19.0773 28.6239C19.3469 29.445 20.1133 30 20.9775 30H40.151M22.6986 23.0952H38.7463C39.5892 23.0952 40.3417 22.5668 40.6277 21.7739L44.0338 12.3312C44.504 11.0276 43.5448 9.65253 42.1591 9.65253C37.0456 9.65253 26.2698 9.65253 19.5291 9.65253" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="22" cy="36" r="2" fill="black" stroke="black" stroke-width="2"/>
+                    <circle cx="38" cy="36" r="3" fill="black"/>
+                    </svg>
+            </a>
+        </div>
+        <div class="flexboxrow arrows">
+            <svg class="btn" width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M29.5 14.9019L6.24999 1.47853C4.25 0.323826 1.75 1.7672 1.75 4.07661L1.75 30.9234C1.75 33.2328 4.25 34.6762 6.25 33.5215L29.5 20.0981C31.5 18.9434 31.5 16.0566 29.5 14.9019Z" stroke="black" stroke-width="2"/>
+                </svg>
+       </div>
+    </div>
+    <div class="dots">
+        <a href="#">
+        <svg class="dots" width="7" height="31" viewBox="0 0 7 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="3.5" cy="3.5" r="3.5" fill="#1F1F1F"/>
+            <circle cx="3.5" cy="15.5" r="3.5" fill="#1F1F1F"/>
+            <circle cx="3.5" cy="27.5" r="3.5" fill="#1F1F1F"/>
+            </svg>                
+        </a>
+    </nav>
+    
+    <script src="appP5.js"></script>
+</body>
+</html>

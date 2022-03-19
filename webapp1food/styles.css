@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+/*notes
+--class of btn are in all svgs, except for those in the fixed navbar
+--class of btn are for all btns in this application, not anchor links
+--class of card are not class of cat
+--use id for js, do not use class names unless need to be added dynamically
+--page layout for this application: header, sub, main, section, nav
+*/
+/**root values and */
+* {
+    font-family: 'Share Tech Mono', monospace;
+    align-items: center;
+    font-size: 16px;
+}
+:root{
+    --primary: #88E78E;
+    --secondary: #E3E4DD;
+    --bg-primary: #DFD5CD;
+    --text-primary: #2A2A28;
+    --text-secondary: #194931; 
+}
+body{
+    min-height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    background-color: var(--bg-primary);
+}
+header,sub,main{
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+header > h1{
+    font-size: 2rem;
+}
+.border{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 2px #2A2A28 solid;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 27px;
+    width: 215px;
+    margin: 5px;
+}
+.border>.input{
+    border: none;
+    background-color: var(--bg-primary);
+    width: 175px;
+}
+.small{
+    width: 100px;
+}
+.qty{
+    border: none;
+    background-color: var(--bg-primary);
+    width: 63%;
+    margin-left: 5%;
+}
+.search,.add-category{
+    margin-left: 4%;
+}
+.btn{
+    cursor: pointer;
+}
+.btn:hover{
+    filter: grayscale(30%) opacity(0.5);
+}
+.flexboxrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flexboxcolumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gridbox3{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.strikethrough{
+    text-decoration: line-through;
+    user-select: none;
+}
+h2{
+    font-size: 1.5rem;
+}
+
+/*page5 css*/
+.cat-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px #2A2A28 solid;
+    border-radius: 25px;
+    overflow: scroll;
+    height: 400px;
+    width: 215px;
+    margin: 10px;
+}
+.deletebtn{
+    width: fit-content;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 2px 10px;
+}
+.items-area{
+    height: 315px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/*most css for p2*/
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px #2A2A28 solid;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 400px;
+    width: 300px;
+    margin: 10px;
+}
+.card>h3{
+    text-decoration: underline;
+    user-select: none;
+    margin-top: 0px;
+}
+.recipelist{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: scroll;
+    height: 310px;
+    width: 240px;
+}
+.recipelistblock{
+    border-bottom: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+.width{
+    width:250px;
+}
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 5;
+    background-color: rgb(0,0,0,0.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.custom{
+    background-color: var(--bg-primary);
+    margin: 100px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 25px;
+    width: 70%;
+    overflow: scroll;
+    height: fit-content;
+}
+.modal-active{
+    display: block;
+}
+
+/*--cards within modals in p2*/
+.rec-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px #2A2A28 solid;
+    border-radius: 25px;
+    height: 400px;
+    width: 240px;
+    margin: 10px;
+}
+.rec-card > h3> span{
+    position: absolute;
+    margin-left: 55px;
+    margin-top: -5px;
+}
+.text-area{
+    max-width: 200px;
+    height: 340px;
+    max-height: 340px;
+    overflow: scroll;
+    overflow-wrap: break-word;
+}
+h2>span{
+    position: absolute;
+    margin-left: 30px;
+}
+
+/*most css for p3*/
+.log{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 25px;
+    height: 300px;
+    width: 240px;
+    margin: 10px;
+}
+.user-img{
+    border: 2px solid black;
+    border-radius: 25px;
+    height: 120px;
+    width: 190px;
+    margin-top: 15px;
+}
+.log>span{
+    margin-top: 5px;
+}
+.log>span>svg{
+    position: absolute;
+    margin-left: 60px;
+}
+.log-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 90px;
+    width: 180px;
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+.log-contents > p{
+    margin: 5px;
+}
+.hero{
+    border: 2px black solid;
+    border-radius: 25px;
+    max-width: 450px;
+    width: 450px;
+    height: 200px;
+    max-height: 200px;
+}
+.hero> p{
+    overflow: scroll;
+    overflow-wrap: break-word;
+    border: none;
+    width: 420px;
+    height: 180px;
+    user-select: none;
+}
+
+/*fixed navbar css*/
+nav{
+    width: 100%;
+    min-height: 8%;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+nav > .icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: transform 600ms ease;
+    filter: grayscale(100%) opacity(1);
+}
+.arrows{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+}
+.dots{
+    display: none;
+}
+.icon:hover{
+    transform: rotate(-360deg);
+    filter: grayscale(0%) opacity(1);
+}
+
+/*media queries for viewport layouts*/
+@media (max-width:800px){
+    .gridbox3{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .arrows{
+        display: none;
+    }
+    .arrow-left,.arrow-right{
+        display: none;
+    }
+}
+@media (max-width:600px){
+    .gridbox3{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .flexboxrow{
+        flex-direction: column;
+    }
+    .icon >a,.icon>.arrows{
+        display: none;
+    }
+    .dots{
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+}
