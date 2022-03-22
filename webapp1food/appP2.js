@@ -81,15 +81,29 @@ newCustomCardBtn.addEventListener('click',()=>{
     newCardModal.classList.add('modal-active')
 })
 newRecipeBtn.addEventListener('click',()=>{
-    newRecipeModal.classList.add('modal-active')
+    //checks for card, if no card, error msg
+    if(!cardArea.children.length){
+        console.log('add a card first!');
+        //needs better error message
+    }else{
+        newRecipeModal.classList.add('modal-active')
+    }
 })
 cardModalCloser.addEventListener('click',()=>{
     newCardModal.classList.remove('modal-active')
+    //clears fields
     newCardNameIn.value = '';
     newCardNameIn.setAttribute('placeholder','name of card')
 })
 recModalCloser.addEventListener('click',()=>{
     newRecipeModal.classList.remove('modal-active')
+    //clears fields
+    recNameIn.value = '';
+    recPsIn.value = '';
+    recTimeIn.value = '';
+    recDiffIn.value = 'unsure'
+    recPriceIn.value = '';
+    recSelCard.value = 'no selection';
 })
 
 //*custom card modal contents
@@ -210,7 +224,7 @@ function newRecipe(name,ps,time,diff,price,card){
     const newRecName = document.createElement('span');
         newRecName.textContent = name;
     const newRecPs = document.createElement('span');
-        newRecPs.textContent = ` for ${ps}`
+        newRecPs.textContent = ` for ${ps}` //*this has bugs when called from localstorage idky
     const newRecTime = document.createElement('p');
         if(time<60){
             newRecTime.textContent = `${time}min `;
