@@ -138,78 +138,81 @@
             </div>
         </div>
 
-        <div class="modal flexboxcolumn">
-            <h2>name of recipe<span><svg id="titleEditBtn" class="btn" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="14.5" cy="14.5" r="13.5" stroke="black" stroke-width="2"/>
-                <path d="M17.6466 9.65857L8.92641 17.3407C8.87971 17.3819 8.8411 17.4314 8.81257 17.4867L7.48541 20.0591C7.29173 20.4345 7.62204 20.8661 8.035 20.7772L11.048 20.1285C11.1315 20.1105 11.2091 20.0713 11.2733 20.0148L20 12.3266M17.6466 9.65857L18.5 8.90679L19.0624 8.41138C20.4542 7.06277 23.2378 9.31038 21.382 11.1091L20 12.3266M17.6466 9.65857L20 12.3266" stroke="black" stroke-width="1.5"/>
-                </svg>
-                </span></h2>
-                <div class="border">
-                    <select class="input" name="category" id="recipe-card">
-                        <option value="no selection">select a card</option>
-                        <option value="recipelist">all recipes</option>
-                    </select>
-                </div>
-            <div class="flexboxrow">
-                <div class="flexboxcolumn">
+        <div class="modal">
+            <div class="custom flexboxcolumn">
+                <h2>name of recipe<span><svg id="titleEditBtn" class="btn" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14.5" cy="14.5" r="13.5" stroke="black" stroke-width="2"/>
+                    <path d="M17.6466 9.65857L8.92641 17.3407C8.87971 17.3819 8.8411 17.4314 8.81257 17.4867L7.48541 20.0591C7.29173 20.4345 7.62204 20.8661 8.035 20.7772L11.048 20.1285C11.1315 20.1105 11.2091 20.0713 11.2733 20.0148L20 12.3266M17.6466 9.65857L18.5 8.90679L19.0624 8.41138C20.4542 7.06277 23.2378 9.31038 21.382 11.1091L20 12.3266M17.6466 9.65857L20 12.3266" stroke="black" stroke-width="1.5"/>
+                    </svg>
+                    </span></h2>
                     <div class="border">
-                        <input id="recPSIn" class="input" type="number" value="" placeholder="portion size"  autocomplete="off">
+                        <select class="input" name="category" id="recipe-card">
+                            <option value="no selection">select a card</option>
+                            <option value="recipelist">all recipes</option>
+                        </select>
                     </div>
-                    <div class="border">
-                        <input id="addIng" class="input" type="text" value="" placeholder="add ingredient" autocomplete="off">
+                <div class="flexboxrow">
+                    <div class="flexboxcolumn">
+                        <div class="border">
+                            <input id="recPSIn" class="input" type="number" value="" placeholder="portion size"  autocomplete="off">
+                        </div>
+                        <div class="border">
+                            <input id="addIng" class="input" type="text" value="" placeholder="add ingredient" autocomplete="off">
+                        </div>
+                        <div class="border">
+                            <input id="addIngQty" class="input qty" type="number" value="" placeholder="qty" autocomplete="off">
+                            <svg id="addIngBtn" class="plus-icon btn" width="23" height="23" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="13.5" cy="13.5" r="12.5" stroke="black" stroke-width="2"/>
+                            <line x1="6" y1="13.5" x2="21" y2="13.5" stroke="black" stroke-width="3"/>
+                            <line y1="-1.5" x2="15" y2="-1.5" transform="matrix(0 -1 -1 0 12 21)" stroke="black" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <div class="rec-card">
+                            <h3>ingredients</h3>
+                            <div id="ingredientCard" class="text-area">
+                            </div>
+                        </div>
                     </div>
-                    <div class="border">
-                        <input id="addIngQty" class="input qty" type="number" value="" placeholder="qty" autocomplete="off">
-                        <svg id="addIngBtn" class="plus-icon btn" width="23" height="23" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13.5" cy="13.5" r="12.5" stroke="black" stroke-width="2"/>
-                        <line x1="6" y1="13.5" x2="21" y2="13.5" stroke="black" stroke-width="3"/>
-                        <line y1="-1.5" x2="15" y2="-1.5" transform="matrix(0 -1 -1 0 12 21)" stroke="black" stroke-width="3"/>
-                        </svg>
-                    </div>
-                    <div class="rec-card">
-                        <h3>ingredients</h3>
-                        <div id="ingredientCard" class="text-area">
+                    <div class="flexboxcolumn">
+                        <div class="border">
+                            <input id="recTimeIn" class="input" type="number" value="" placeholder="cook time (mins)" autocomplete="off">
+                        </div>
+                        <div class="border">
+                            <select class="input" id="recDiffIn" name="difficulty">
+                                <option value="unsure">difficulty</option>
+                                <option value="pretty easy">pretty easy</option>
+                                <option value="not too hard">not too hard</option>
+                                <option value="very hard">very hard</option>
+                            </select>
+                        </div>
+                        <div class="border">
+                           <span>$</span><input id="recPriceIn" class="input" type="number" value="" placeholder="total price" autocomplete="off">
+                        </div>
+                        <div class="rec-card">
+                            <h3>method <span><svg id="methodEditBtn" class="btn" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="14.5" cy="14.5" r="13.5" stroke="black" stroke-width="2"/>
+                                <path d="M17.6466 9.65857L8.92641 17.3407C8.87971 17.3819 8.8411 17.4314 8.81257 17.4867L7.48541 20.0591C7.29173 20.4345 7.62204 20.8661 8.035 20.7772L11.048 20.1285C11.1315 20.1105 11.2091 20.0713 11.2733 20.0148L20 12.3266M17.6466 9.65857L18.5 8.90679L19.0624 8.41138C20.4542 7.06277 23.2378 9.31038 21.382 11.1091L20 12.3266M17.6466 9.65857L20 12.3266" stroke="black" stroke-width="1.5"/>
+                                </svg>
+                                </span></h3>
+                                <div id="textArea" class="text-area" contenteditable="false">
+                                1. click the + button to edit
+                                <br>
+                                <br>
+                                2. mix flour and eggs together
+                                </div>
                         </div>
                     </div>
                 </div>
-                <div class="flexboxcolumn">
+                <div class="flexboxrow">
                     <div class="border">
-                        <input id="recTimeIn" class="input" type="number" value="" placeholder="cook time (mins)" autocomplete="off">
+                        <input id="dynRecUpdate" class="input btn" type="button" value="update">
                     </div>
                     <div class="border">
-                        <select class="input" id="recDiffIn" name="difficulty">
-                            <option value="unsure">difficulty</option>
-                            <option value="pretty easy">pretty easy</option>
-                            <option value="not too hard">not too hard</option>
-                            <option value="very hard">very hard</option>
-                        </select>
-                    </div>
-                    <div class="border">
-                       <span>$</span><input id="recPriceIn" class="input" type="number" value="" placeholder="total price" autocomplete="off">
-                    </div>
-                    <div class="rec-card">
-                        <h3>method <span><svg id="methodEditBtn" class="btn" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="14.5" cy="14.5" r="13.5" stroke="black" stroke-width="2"/>
-                            <path d="M17.6466 9.65857L8.92641 17.3407C8.87971 17.3819 8.8411 17.4314 8.81257 17.4867L7.48541 20.0591C7.29173 20.4345 7.62204 20.8661 8.035 20.7772L11.048 20.1285C11.1315 20.1105 11.2091 20.0713 11.2733 20.0148L20 12.3266M17.6466 9.65857L18.5 8.90679L19.0624 8.41138C20.4542 7.06277 23.2378 9.31038 21.382 11.1091L20 12.3266M17.6466 9.65857L20 12.3266" stroke="black" stroke-width="1.5"/>
-                            </svg>
-                            </span></h3>
-                            <div id="textArea" class="text-area" contenteditable="false">
-                            1. click the + button to edit
-                            <br>
-                            <br>
-                            2. mix flour and eggs together
-                            </div>
+                        <input id="dynRecClose" class="input btn" type="button" value="close">
                     </div>
                 </div>
             </div>
-            <div class="flexboxrow">
-                <div class="border">
-                    <input id="dynRecUpdate" class="input btn" type="button" value="update">
-                </div>
-                <div class="border">
-                    <input id="dynRecClose" class="input btn" type="button" value="close">
-                </div>
-            </div>
+            
         </div>
     </div>
 
