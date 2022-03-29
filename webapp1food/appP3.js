@@ -1,5 +1,18 @@
 //?image upload function
-//?find out how to store data in another local file or server and how to not reset pages every time it is refreshed
+
+//*info to be collected for each new entry:
+const entryArr = [{
+    title:"",
+    imgsrc: "",
+    rating: "selection",
+    dateOfEntry: "",
+    venue:"",
+    chefName:"",
+    mealType:"",
+    worthIt: `${Boolean}`,
+    foodContains:"selection",
+    logText:""
+}];
 
 //modal opening and closing
 const newEntryModal = document.querySelector('#newEntryModal');
@@ -17,22 +30,18 @@ newEntryCancel.addEventListener('click',()=>{
 const entryLogText = document.querySelector('#entryLogTextArea');
 entryLogText.addEventListener('dblclick',()=>{
     entryLogText.setAttribute('contenteditable','true')
-})
+});
 entryLogText.addEventListener('focusout',()=>{
     entryLogText.setAttribute('contenteditable','false')
-})
+});
 
-//info to be collected for each new entry:
-const entryArr = [{
-    entryName:"",
-    imgsrc: "",
-    rating: "selection",
-    dateOfEntry: "",
-    venue:"",
-    chefName:"",
-    mealType:"",
-    worthIt: `${Boolean}`,
-    foodContains:"selection",
-    logText:""
-}]
+//star rating bar 
+//*change fill of stars with svg path property of stroke
+const rating = document.querySelector("#star-rating");
+
+//insert data collected to card appended
+
+
+
+
 

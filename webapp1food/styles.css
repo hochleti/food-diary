@@ -206,7 +206,7 @@ h2{
     margin-top: -5px;
 }
 .text-area{
-    max-width: 200px;
+    width: 200px;
     height: 340px;
     max-height: 340px;
     overflow: scroll;

@@ -2,13 +2,14 @@
 
 //global variable
 let recList = [];
+let ingArr = [];
 /*recArr data structure = [
     {
         name:cardName1,
         recipes: [{
             recName: string,
             recPS: number,
-            ingredients: [{name: value},{qty:value}],
+            ingredients: [{name:value, qty:value},{name:value, qty:value}],
             recTime: number,
             recDiff: value,
             recPrice: number,
@@ -16,7 +17,7 @@ let recList = [];
         },{
             recName: string,
             recPS: number,
-            ingredients: [{name: value},{qty:value}],
+            ingredients: [{name:value, qty:value},{name:value, qty:value}],
             recTime: number,
             recDiff: value,
             recPrice: number,
@@ -132,13 +133,16 @@ function saveNewCard(name){
     newCardOpt.value = name;
     cardSelect.append(newCardOpt);
     //deleteBtn functions
+    let deleteBtnClick = false;
     deletebtn.addEventListener('click',()=>{
-        if(deletebtn.textContent !== 'dbl click to delete'){
+        if(deleteBtnClick){
             deletebtn.textContent = 'delete';
+            deleteBtnClick = false;
         }else{
             deletebtn.textContent = 'dbl click to delete';
+            deleteBtnClick = true;
         }
-    })
+    });
     deletebtn.addEventListener('dblclick',()=>{
         //removes card from HTML
         newCard.remove();
@@ -153,7 +157,7 @@ function saveNewCard(name){
             console.log(recList);
             updateRecList()
         }
-    })
+    });
 }
 //calls new card function
 saveCardBtn.addEventListener('click',()=>{
@@ -175,48 +179,6 @@ saveCardBtn.addEventListener('click',()=>{
 })
 
 //*recipe modal contents
-//adding ingredient and qty to ingredients card
-function addIng(ing,qty){
-    //create item div
-    const newIng = document.createElement('div')
-    newIng.classList.add('strikethrough')
-    newIng.classList.toggle('strikethrough')
-    newIng.textContent = ` ${ing}`
-    const newQty = document.createElement('span')
-    newQty.textContent = `x${qty} `
-    newIng.prepend(newQty)
-    ingList.append(newIng)
-    newIng.style.cursor = 'crosshair'
-    //new item deletion and strikethrough
-    newIng.addEventListener('click',()=>{
-        newIng.classList.toggle('strikethrough')
-    })
-    newIng.addEventListener('dblclick',()=>{
-        newIng.remove()
-    })
-}
-newIngBtn.addEventListener('click',()=>{
-    if(newIngInput.value == ''||newIngQty.value == ''){
-        newIngInput.setAttribute('placeholder','enter an ingredient!')
-        newIngQty.setAttribute('placeholder','null')
-    }else{
-        addIng(newIngInput.value,newIngQty.value)
-        //adds ingredients to recList array
- 
-        newIngInput.value = ''
-        newIngQty.value = ''
-    }
-})
-//make method area contenteditable
-editBtn.addEventListener('click',()=>{
-    methodArea.setAttribute('contenteditable','true')
-    //console.log(methodArea.textContent)
-    //*output methodArea.textcontent to localstorage or JSON file??
-})
-methodArea.addEventListener('focusout',()=>{
-    methodArea.setAttribute('contenteditable','false')
-})
-//*save recipe functions
 //creation of new recipe block
 function newRecipe(name,ps,time,diff,price,card){ 
     const newRecBlock = document.createElement('div');
@@ -246,7 +208,7 @@ function newRecipe(name,ps,time,diff,price,card){
     const cardStr = card.replace(/\s+/g,'-');
     const cardList = document.querySelector(`.${cardStr}`);
     cardList.append(newRecBlock)
-    //dynamic modal that generates with 
+
     //deletes itself with dbl click
     newRecBlock.addEventListener('dblclick',()=>{
         newRecBlock.remove();
@@ -284,18 +246,70 @@ saveRecBtn.addEventListener('click',()=>{
                 recDiff: recDiffIn.value,
                 recPrice: recPriceIn.value,
                 recPs: recPsIn.value,
-                recMethod: "method",
-                ingredients: [],
-                ingQty: "0"
-            })
+                recMethod: methodArea.textContent,
+                ingredients: ingArr
+            });
             updateRecList()
         }
-        //returns fields to orginals
+        //returns fields to default
         recNameIn.value = '';
         recPsIn.value = '';
         recTimeIn.value = '';
         recDiffIn.value = 'unsure'
         recPriceIn.value = '';
         recSelCard.value = 'no selection';
+        methodArea.innerHTML = "1. click the + button to edit<br>2. mix flour and eggs together";
+        ingList.innerHTML = '';
     }
+})
+
+//adding ingredient and qty to ingredients card function
+function addIng(ing,qty){
+    //create item div
+    const newIng = document.createElement('div')
+    newIng.classList.add('strikethrough')
+    newIng.classList.toggle('strikethrough')
+    newIng.textContent = ` ${ing}`
+    const newQty = document.createElement('span')
+    newQty.textContent = `x${qty} `
+    newIng.prepend(newQty)
+    ingList.append(newIng)
+    newIng.style.cursor = 'crosshair'
+
+    //new item deletion and strikethrough
+    newIng.addEventListener('click',()=>{
+        newIng.classList.toggle('strikethrough')
+    })
+    newIng.addEventListener('dblclick',()=>{
+        newIng.remove()
+    })
+}
+//adds ingredient to card and ingArr
+newIngBtn.addEventListener('click',()=>{
+    if(newIngInput.value == ''||newIngQty.value == ''){
+        newIngInput.setAttribute('placeholder','enter an ingredient!')
+        newIngQty.setAttribute('placeholder','null')
+    }else{
+        addIng(newIngInput.value,newIngQty.value)
+        ingArr.push({
+            name:newIngInput.value,
+            qty:newIngQty.value
+        })
+        console.log(ingArr);
+        newIngInput.value = '';
+        newIngInput.setAttribute('placeholder','ingredient')
+        newIngQty.value = ''
+        newIngQty.setAttribute('placeholder','qty')
+    }
+})
+
+//make method area contenteditable
+editBtn.addEventListener('click',()=>{
+    methodArea.setAttribute('contenteditable','true')
+    //console.log(methodArea.textContent)
+    //*output methodArea.textcontent to localstorage or JSON file??
+})
+methodArea.addEventListener('focusout',()=>{
+    methodArea.setAttribute('contenteditable','false')
+    console.log(methodArea.textContent);
 })
