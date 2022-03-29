@@ -235,7 +235,8 @@ saveRecBtn.addEventListener('click',()=>{
     }else{
         newRecipe(recNameIn.value,recPsIn.value,recTimeIn.value,recDiffIn.value,recPriceIn.value,recSelCard.value);
         newRecipeModal.classList.remove('modal-active');
-        //adds data to localstorage array
+        
+        //*adds data to localstorage array
         const cardSel = recList.findIndex((card)=>{
             return card.name === recSelCard.value
         })
@@ -251,7 +252,7 @@ saveRecBtn.addEventListener('click',()=>{
             });
             updateRecList()
         }
-        //returns fields to default
+        //clears fields to default
         recNameIn.value = '';
         recPsIn.value = '';
         recTimeIn.value = '';
@@ -263,6 +264,7 @@ saveRecBtn.addEventListener('click',()=>{
     }
 })
 
+//*recipe modal contents
 //adding ingredient and qty to ingredients card function
 function addIng(ing,qty){
     //create item div
@@ -275,27 +277,34 @@ function addIng(ing,qty){
     newIng.prepend(newQty)
     ingList.append(newIng)
     newIng.style.cursor = 'crosshair'
+    
+    //*pushes inputs to ingArr
+    ingArr.push({
+        name: ing,
+        qty: qty
+    })
 
     //new item deletion and strikethrough
     newIng.addEventListener('click',()=>{
         newIng.classList.toggle('strikethrough')
     })
     newIng.addEventListener('dblclick',()=>{
-        newIng.remove()
-    })
+        newIng.remove();
+        //removes from ingArr
+        const ingSel = ingArr.findIndex((ing)=>{
+            return ing.name === ing
+        })
+        ingArr.splice(ingSel,1)
+    }) 
+    
 }
-//adds ingredient to card and ingArr
+//*adds ingredient to card and ingArr
 newIngBtn.addEventListener('click',()=>{
     if(newIngInput.value == ''||newIngQty.value == ''){
         newIngInput.setAttribute('placeholder','enter an ingredient!')
         newIngQty.setAttribute('placeholder','null')
     }else{
         addIng(newIngInput.value,newIngQty.value)
-        ingArr.push({
-            name:newIngInput.value,
-            qty:newIngQty.value
-        })
-        console.log(ingArr);
         newIngInput.value = '';
         newIngInput.setAttribute('placeholder','ingredient')
         newIngQty.value = ''
